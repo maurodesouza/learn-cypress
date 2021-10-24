@@ -18,7 +18,7 @@ const Showcase = ({
   games,
   color = 'white'
 }: ShowcaseProps) => (
-  <S.Wrapper>
+  <S.Wrapper data-cy={title}>
     {!!title && (
       <Heading lineLeft lineColor="secondary">
         {title}
