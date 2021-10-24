@@ -11,13 +11,14 @@ declare namespace Cypress {
     /**
      * Custom command to check banner in page
      * @example cy.shouldRenderBanner()
-     */
-     shouldRenderBanner(): Chainable<Element>
+    */
+    shouldRenderBanner(): Chainable<Element>
 
-         /**
+
+    /**
      * Custom command to check showcase in page
      * @example cy.shouldRenderBanner()
-     */
-      shouldRenderShowcase(attr: ShowcaseAttributes): Chainable<Element>
+    */
+    shouldRenderShowcase(attr: ShowcaseAttributes): Chainable<Element>
   }
 }
