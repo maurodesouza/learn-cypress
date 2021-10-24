@@ -3,7 +3,7 @@
 
 type ShowcaseAttributes = {
   name: string
-  highlitgh?: boolean
+  hightlight?: boolean
 }
 
 declare namespace Cypress {
