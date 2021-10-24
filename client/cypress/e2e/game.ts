@@ -13,5 +13,9 @@ describe('Game Page', () => {
     })
 
     cy.findAllByRole('button', { name: /thumb \-/i }).should('have.length.gt', 0)
+
+    cy.getByDataCy('content').within(() => {
+      cy.findByRole('heading', { name: 'Description' })
+    }).children().should('have.length.at.least', 2)
   })
 })
