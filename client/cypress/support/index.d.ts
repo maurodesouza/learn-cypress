@@ -4,9 +4,9 @@
 declare namespace Cypress {
   interface Chainable {
     /**
-     * Custom command to visit youtube page
-     * @example cy.google()
+     * Custom command to check banner in page
+     * @example cy.shouldRenderBanner()
      */
-    google(): Chainable<Window>
+     shouldRenderBanner(): Chainable<Element>
   }
 }
