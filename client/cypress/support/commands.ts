@@ -45,8 +45,16 @@ Cypress.Commands.add('shouldRenderBanner', () => {
   })
 })
 
-Cypress.Commands.add('shouldRenderShowcase', ({ name, highlight = false }) => {
+Cypress.Commands.add('shouldRenderShowcase', ({ name, hightlight = false }) => {
   cy.get(`[data-cy='${name}']`).within(() => {
     cy.findByRole('heading', { name }).should('exist')
+
+    cy.get("[data-cy='hightlight']").should(hightlight ? 'exist' : 'not.exist')
+
+    if (hightlight) {
+      cy.get("[data-cy='hightlight']").within(() => {
+        cy.findByRole('link').should('have.attr', 'href')
+      })
+    }
   })
 })
