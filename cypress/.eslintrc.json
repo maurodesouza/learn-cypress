@@ -1,0 +1,10 @@
+{
+  "env": {
+    "cypress/globals": true
+  },
+  "root": true,
+  "extends": [
+    "plugin:cypress/recommended"
+  ],
+
+}
