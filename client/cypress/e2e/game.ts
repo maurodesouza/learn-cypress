@@ -46,7 +46,7 @@ describe('Game Page', () => {
   })
 
   it('should add/remove games fro cart', () => {
-    cy.findAllByLabelText(/cart items/i).should('have.length', 0)
+    cy.findAllByLabelText(/cart items/i).should('not.exist')
 
     cy.getByDataCy('game-info').within(() => {
       cy.findByRole('button', { name: /remove from cart/i }).should('not.exist')
@@ -68,5 +68,18 @@ describe('Game Page', () => {
       .within(() => {
         cy.findByRole('heading', { name: /cyberpunk 2077/i })
       })
+
+    cy.findAllByLabelText(/cart items/i)
+      .first()
+      .click()
+
+    cy.getByDataCy('game-info').within(() => {
+      cy.findByRole('button', { name: /remove from cart/i }).click()
+
+      cy.findByRole('button', { name: /remove from cart/i }).should('not.exist')
+      cy.findByRole('button', { name: /add to cart/i }).should('exist')
+    })
+
+    cy.findAllByLabelText(/cart items/i).should('not.exist')
   })
 })
