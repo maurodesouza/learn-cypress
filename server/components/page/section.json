@@ -2,7 +2,8 @@
   "collectionName": "components_page_sections",
   "info": {
     "name": "section",
-    "icon": "align-justify"
+    "icon": "align-justify",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -13,6 +14,9 @@
       "type": "component",
       "repeatable": false,
       "component": "page.highlight"
+    },
+    "games": {
+      "collection": "game"
     }
   }
 }
