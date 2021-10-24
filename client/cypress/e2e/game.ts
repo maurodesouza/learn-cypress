@@ -5,7 +5,7 @@ describe('Game Page', () => {
     cy.visit('/game/cyberpunk-2077')
   })
 
-  it.skip('should render home sections', () => {
+  it('should render home sections', () => {
     cy.getByDataCy('game-info').within(() => {
       cy.findByRole('heading', { name: /cyberpunk 2077/i }).should('exist')
       cy.findByText(/^cyberpunk 2077 is an open-world/i).should('exist')
