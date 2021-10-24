@@ -9,6 +9,13 @@ type ShowcaseAttributes = {
 declare namespace Cypress {
   interface Chainable {
     /**
+     * Custom command to get elements by data-cy
+     * @example cy.getByDataCy()
+    */
+     getByDataCy(selector: string, ...args: any[]): Chainable<Element>
+
+
+    /**
      * Custom command to check banner in page
      * @example cy.shouldRenderBanner()
     */

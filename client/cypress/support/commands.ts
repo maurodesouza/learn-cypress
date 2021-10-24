@@ -26,6 +26,9 @@
 
 import '@testing-library/cypress/add-commands';
 
+Cypress.Commands.add('getByDataCy', (selector, ...args) => cy.get(`[data-cy="${selector}"]`, ...args))
+
+
 Cypress.Commands.add('shouldRenderBanner', () => {
   cy.get('.slick-slider').within(() => {
     cy.findByRole('heading', { name: /cyberpunk 2077/i })
@@ -46,17 +49,17 @@ Cypress.Commands.add('shouldRenderBanner', () => {
 })
 
 Cypress.Commands.add('shouldRenderShowcase', ({ name, hightlight = false }) => {
-  cy.get(`[data-cy='${name}']`).within(() => {
+  cy.getByDataCy(name).within(() => {
     cy.findByRole('heading', { name }).should('exist')
 
-    cy.get("[data-cy='hightlight']").should(hightlight ? 'exist' : 'not.exist')
+    cy.getByDataCy('hightlight').should(hightlight ? 'exist' : 'not.exist')
 
     if (hightlight) {
-      cy.get("[data-cy='hightlight']").within(() => {
+      cy.getByDataCy('hightlight').within(() => {
         cy.findByRole('link').should('have.attr', 'href')
       })
     }
 
-    cy.get("[data-cy='game-card']").should('have.length.gt', 0)
+    cy.getByDataCy('game-card').should('have.length.gt', 0)
   })
 })
