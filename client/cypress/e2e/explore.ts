@@ -23,4 +23,10 @@ describe('Explore Page', () => {
 
     fields.map(({ label }) => cy.findByText(label).should('exist'))
   })
+
+  it('should show 15 games and show more games when show more is clicked', () => {
+    cy.getByDataCy('game-card').should('have.length', 15)
+    cy.findByRole('button', { name: /show more/i }).click()
+    cy.getByDataCy('game-card').should('have.length', 30)
+  })
 })
