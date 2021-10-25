@@ -27,5 +27,17 @@ declare namespace Cypress {
      * @example cy.shouldRenderBanner()
     */
     shouldRenderShowcase(attr: ShowcaseAttributes): Chainable<Element>
+
+    /**
+     * Custom command to find some price in scope and check if value is less that price
+     * @example cy.shouldPriceBeLessThan(100)
+    */
+    shouldPriceBeLessThan(value: number): Chainable<Element>
+
+    /**
+     * Custom command to find some price in scope and check if value is greater that price
+     * @example cy.shouldPriceBeGreaterThan(100)
+    */
+     shouldPriceBeGreaterThan(value: number): Chainable<Element>
   }
 }
