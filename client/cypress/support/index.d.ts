@@ -39,5 +39,11 @@ declare namespace Cypress {
      * @example cy.shouldPriceBeGreaterOrEqualThan(100)
     */
      shouldPriceBeGreaterOrEqualThan(value: number): Chainable<Element>
+
+    /**
+     * Custom command to get filter and check game card price
+     * @example cy.shouldFilterByPrice(100)
+    */
+    shouldFilterByPrice(value: number): Chainable<Element>
   }
 }

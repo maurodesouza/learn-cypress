@@ -81,4 +81,20 @@ Cypress.Commands.add('shouldPriceBeGreaterOrEqualThan', value => {
     .then(parseFloat)
     .should('be.gte', value)
 })
+
+Cypress.Commands.add('shouldFilterByPrice', value => {
+  const label = value > 0 ? `Under $${value}` : 'Free'
+
+  cy.findByLabelText(label).click()
+  cy.location('href').should('contain', `price_lte=${value}`)
+
+  cy.getByDataCy('game-card')
+    .first()
+    .within(() => {
+      cy.shouldPriceBeLessOrEqualThan(value)
+    })
+    .last()
+    .within(() => {
+      cy.shouldPriceBeLessOrEqualThan(value)
+    })
 })

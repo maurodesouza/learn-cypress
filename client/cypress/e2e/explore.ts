@@ -45,4 +45,15 @@ describe('Explore Page', () => {
       cy.shouldPriceBeGreaterOrEqualThan(0)
     })
   })
+
+  it('should filter by price', () => {
+    cy.findByText(/highest to lowest/i).click()
+
+    cy.shouldFilterByPrice(0)
+    cy.shouldFilterByPrice(50)
+    cy.shouldFilterByPrice(100)
+    cy.shouldFilterByPrice(150)
+    cy.shouldFilterByPrice(250)
+    cy.shouldFilterByPrice(500)
+  })
 })
