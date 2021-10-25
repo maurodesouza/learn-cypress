@@ -30,14 +30,14 @@ declare namespace Cypress {
 
     /**
      * Custom command to find some price in scope and check if value is less that price
-     * @example cy.shouldPriceBeLessThan(100)
+     * @example cy.shouldPriceBeLessOrEqualThan(100)
     */
-    shouldPriceBeLessThan(value: number): Chainable<Element>
+     shouldPriceBeLessOrEqualThan(value: number): Chainable<Element>
 
     /**
      * Custom command to find some price in scope and check if value is greater that price
-     * @example cy.shouldPriceBeGreaterThan(100)
+     * @example cy.shouldPriceBeGreaterOrEqualThan(100)
     */
-     shouldPriceBeGreaterThan(value: number): Chainable<Element>
+     shouldPriceBeGreaterOrEqualThan(value: number): Chainable<Element>
   }
 }

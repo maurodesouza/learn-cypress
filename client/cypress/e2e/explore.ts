@@ -42,7 +42,7 @@ describe('Explore Page', () => {
     cy.location('href').should('contain', 'sort=price%3Adesc')
 
     cy.getByDataCy('game-card').first().within(() => {
-      cy.shouldPriceBeGreaterThan(0)
+      cy.shouldPriceBeGreaterOrEqualThan(0)
     })
   })
 })

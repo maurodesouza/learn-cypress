@@ -64,20 +64,21 @@ Cypress.Commands.add('shouldRenderShowcase', ({ name, hightlight = false }) => {
   })
 })
 
-Cypress.Commands.add('shouldPriceBeLessThan', value => {
+Cypress.Commands.add('shouldPriceBeLessOrEqualThan', value => {
   cy
     .findByText(/^\$\d+(\.\d{1,2})/)
     .invoke('text')
     .then($el => $el.replace('$', ''))
     .then(parseFloat)
-    .should('be.lt', value)
+    .should('be.lte', value)
 })
 
-Cypress.Commands.add('shouldPriceBeGreaterThan', value => {
+Cypress.Commands.add('shouldPriceBeGreaterOrEqualThan', value => {
   cy
     .findByText(/^\$\d+(\.\d{1,2})/)
     .invoke('text')
     .then($el => $el.replace('$', ''))
     .then(parseFloat)
-    .should('be.gt', value)
+    .should('be.gte', value)
+})
 })
