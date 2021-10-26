@@ -98,3 +98,13 @@ Cypress.Commands.add('shouldFilterByPrice', value => {
       cy.shouldPriceBeLessOrEqualThan(value)
     })
 })
+
+Cypress.Commands.add('signUp', ({ username, password, email }) => {
+  cy.findByPlaceholderText(/username/i).type(username)
+  cy.findByPlaceholderText(/email/i).type(email)
+
+  cy.findByPlaceholderText(/^password/i).type(password)
+  cy.findByPlaceholderText(/confirm password/i).type(password)
+
+  cy.findByRole('button', { name: /sign up now/i }).click()
+})

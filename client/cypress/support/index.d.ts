@@ -6,6 +6,12 @@ type ShowcaseAttributes = {
   hightlight?: boolean
 }
 
+type SignUpAttributes = {
+  username: string
+  email: string
+  password: string
+}
+
 declare namespace Cypress {
   interface Chainable {
     /**
@@ -45,5 +51,11 @@ declare namespace Cypress {
      * @example cy.shouldFilterByPrice(100)
     */
     shouldFilterByPrice(value: number): Chainable<Element>
+
+    /**
+     * Custom command to sign up user
+     * @example cy.signUp({ username, password, email })
+    */
+    signUp(attr: SignUpAttributes): Chainable<Element>
   }
 }
