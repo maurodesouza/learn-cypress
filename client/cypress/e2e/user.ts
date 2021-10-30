@@ -9,7 +9,7 @@ describe('User', () => {
     const user = createUser()
     cy.signUp(user)
 
-    cy.url().should('eq', `${Cypress.config().baseUrl}/`)
+    cy.urlShouldBeEqualTo('/')
     cy.findByText(user.username).should('exist')
   })
 
@@ -17,7 +17,7 @@ describe('User', () => {
     cy.visit('/sign-in')
 
     cy.signIn()
-    cy.url().should('eq', `${Cypress.config().baseUrl}/`)
+    cy.urlShouldBeEqualTo('/')
 
     cy.findByText(/cypress/i).should('exist').click()
     cy.findByText(/sign out/i).click()
