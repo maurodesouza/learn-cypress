@@ -13,13 +13,11 @@ describe('User', () => {
     cy.findByText(user.username).should('exist')
   })
 
-  it('should sign in', () => {
+  it('should sign in and sign out', () => {
     cy.visit('/sign-in')
 
-    cy.findByPlaceholderText(/email/i).type('e2e@wongames.com')
-    cy.findByPlaceholderText(/^password/i).type('cypress')
-
-    cy.findByRole('button', { name: /sign in now/i }).click()
+    cy.signIn()
+    cy.url().should('eq', `${Cypress.config().baseUrl}/`)
 
     cy.findByText(/cypress/i).should('exist').click()
     cy.findByText(/sign out/i).click()
