@@ -38,4 +38,31 @@ describe('Reset password', () => {
     cy.findByRole('button', { name: /reset password/i }).click()
     cy.findByText(/incorrect params provided/i).should('exist')
   })
+
+  it('should fill the input and redirect to the home page with the user signed in', () => {
+    cy.intercept('POST', '**/auth/reset-password', {
+      statusCode: 200,
+      body: { user: { email: 'e2e@wongames.com' } }
+    })
+
+    cy.intercept('POST', '**/auth/callback/credentials*', {
+      statusCode: 200,
+      body: { user: { email: 'e2e@wongames.com' } }
+    })
+
+    cy.intercept('GET', '**/auth/session*', {
+      statusCode: 200,
+      body: { user: { name: 'cypress', email: 'e2e@wongames.com' } }
+    })
+
+    cy.visit('/reset-password?code=valid_code')
+
+    cy.findByPlaceholderText(/^password/i).type('123456')
+    cy.findByPlaceholderText(/^confirm password/i).type('123456')
+
+    cy.findByRole('button', { name: /reset password/i }).click()
+
+    cy.urlShouldBeEqualTo('/')
+    cy.findByText(/cypress/i).should('exist')
+  })
 })
