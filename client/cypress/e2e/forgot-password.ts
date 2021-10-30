@@ -1,6 +1,6 @@
 /// <reference path="../support/index.d.ts" />
 
-describe('Reset password', () => {
+describe('Forgot password', () => {
   it('should fill the input and receive an success message', () => {
     cy.intercept('POST', '**/auth/forgot-password', res => {
       res.reply({
