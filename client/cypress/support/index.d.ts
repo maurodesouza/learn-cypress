@@ -20,6 +20,11 @@ declare namespace Cypress {
     */
      getByDataCy(selector: string, ...args: any[]): Chainable<Element>
 
+    /**
+     * Custom command to check current url
+     * @example cy.getByDataCy(urlPath)
+    */
+    urlShouldBeEqualTo(path: string): Chainable<Element>
 
     /**
      * Custom command to check banner in page
