@@ -95,24 +95,24 @@ module.exports = {
     const entity = await strapi.services.order.create(entry);
 
     // enviar um email da compra para o usuário
-    await strapi.plugins["email-designer"].services.email.sendTemplatedEmail(
-      {
-        to: userInfo.email,
-        from: "no-reply@wongames.com",
-      },
-      {
-        templateId: 1,
-      },
-      {
-        user: userInfo,
-        payment: {
-          total: `$ ${total_in_cents / 100}`,
-          card_brand: entry.card_brand,
-          card_last4: entry.card_last4,
-        },
-        games,
-      }
-    );
+    // await strapi.plugins["email-designer"].services.email.sendTemplatedEmail(
+    //   {
+    //     to: userInfo.email,
+    //     from: "no-reply@wongames.com",
+    //   },
+    //   {
+    //     templateId: 1,
+    //   },
+    //   {
+    //     user: userInfo,
+    //     payment: {
+    //       total: `$ ${total_in_cents / 100}`,
+    //       card_brand: entry.card_brand,
+    //       card_last4: entry.card_last4,
+    //     },
+    //     games,
+    //   }
+    // );
 
     // retornando que foi salvo no banco
     return sanitizeEntity(entity, { model: strapi.models.order });
