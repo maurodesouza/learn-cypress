@@ -25,6 +25,7 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 import '@testing-library/cypress/add-commands';
+import 'cypress-plugin-stripe-elements';
 
 Cypress.Commands.add('getByDataCy', (selector, ...args) => cy.get(`[data-cy="${selector}"]`, ...args))
 
