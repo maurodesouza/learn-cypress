@@ -38,7 +38,7 @@ const Wishlist = ({
             <Loader />
           </S.Loading>
         ) : items.length >= 1 ? (
-          <Grid>
+          <Grid data-cy="wishlist">
             {items?.map((game, index) => (
               <GameCard key={`wishlist-${index}`} {...game} />
             ))}
